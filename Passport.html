@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Passport Application</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        form {
+            width: 905px;
+            margin: 0 auto;
+        }
+
+        label {
+            padding-bottom: 15px;
+
+        }
+
+        .POB {
+            display: inline-block;
+            padding: 3px;
+            border: 2px solid black;
+        }
+
+
+        .edu-container {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .radio-item {
+            margin-bottom: 10px;
+        }
+
+        .emp-container {
+            padding-bottom: 15px;
+            display: grid;
+            grid-template-columns: auto auto auto;
+        }
+
+        .name-container {
+            display: flex;
+            flex: auto;
+            justify-content: space-around;
+        }
+
+        input[type="text"] {
+            padding: .375rem .75rem;
+            border: 1px solid grey;
+            border-radius: .25rem;
+        }
+
+        .header-container {
+            border-style: groove;
+            font-family: Arial, Helvetica, sans-serif;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-container .logo-container {
+            display: flex;
+        }
+
+        .logo-container img {
+            padding-right: 10px;
+        }
+
+        .logo-header {
+            color: #3a3838;
+            font-size: 25px;
+        }
+
+        .logo-content {
+            padding-top: 15px
+        }
+
+        .form-submit {
+            background-color: #f5f0f4;
+            border-radius: 50px;
+            border-width: 0;
+            box-shadow: rgba(25, 25, 25, 0.04) 0 0 1px 0, rgba(0, 0, 0, 0.1) 0 3px 4px 0;
+            color: #0f100f;
+            cursor: pointer;
+            display: inline-block;
+            font-family: Arial, sans-serif;
+            font-size: 1em;
+            height: 50px;
+            padding: 0 25px;
+            transition: all 200ms;
+            width: 25%;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header-container">
+        <!-- <h1>GOVERNMENT OF INDIA, MINISTRY OF EXTERNAL AFFAIRS</h1> -->
+        <div class="logo-container">
+            <img src="./asset/img.png" alt="image">
+            <div>
+                <div class="logo-header">Passport Seva</div>
+                <div class="logo-content">
+                    <div>PSP Division</div>
+                    <div>
+                        Ministry of External Affairs, Government of India
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <img src="./asset/passportSeva.png" alt="passportSeva">
+        </div>
+    </div>
+    <div>
+        <h1>Passport Application</h1>
+        <hr>
+    </div>
+
+    <div style="padding: 25px; background-color: aliceblue;">
+        <form action="" class="from-control">
+            <div style="background-color: white; padding: 45px; border-style: groove; margin-top: 43px;">
+                <h1 style="text-align: left; margin-top: 0px;">1. Service</h1>
+                <div>
+                    <div>
+                        <div style="width: 50%;">
+                            <label for="" style="font-weight: bold">1.1 Applying For :</label>
+                            <input type="radio" name="Appying for" id="fresh" onchange="updateOptions()">
+                            <label> Fresh</label>
+                            <input type="radio" name="Appying for" id="renew" onchange="updateOptions()">
+                            <label>Re-issue of Passport</label><br><br>
+
+                            <div id="additionalOptions" style="display: none;">
+                                <input type="checkbox" id="validityExpiredCheckbox">
+                                <label for="validityExpiredCheckbox">Validity Expired within 3 years</label><br>
+
+                                <input type="checkbox" id="expireExhaustionCheckbox">
+                                <label for="expireExhaustionCheckbox">Due to Expire Exhaustion of Pages</label><br>
+
+                                <input type="checkbox" id="validityExpiredMoreCheckbox">
+                                <label for="validityExpiredMoreCheckbox">Validity Expired more than 3 years
+                                    ago</label><br>
+
+                                <input type="checkbox" id="lostPassportCheckbox">
+                                <label for="lostPassportCheckbox">Lost Passport</label><br>
+
+                                <input type="checkbox" id="changePersonalCheckbox">
+                                <label for="changePersonalCheckbox">Change in Existing Personal Particulars</label><br>
+
+                                <input type="checkbox" id="damagedPassportCheckbox">
+                                <label for="damagedPassportCheckbox">Damaged Passport</label><br>
+                            </div>
+                        </div>
+                        <div style="width: 50%;">
+                            <label for="" style="font-weight: bold">1.2 Type of application :</label>
+                            <input type="radio" name="Type of application" id="Normal">
+                            <label> Normal </label>
+                            <input type="radio" name="Type of application" id="Tatkaal">
+                            <label>Tatkaal</label><br><br>
+                        </div>
+                    </div>
+
+                </div>
+                <div>
+                    <label for="" style="font-weight: bold">1.3 Type of Passport Booklet :</label>
+                    <input type="radio" name="Booklet" id="36P">
+                    <label> 36 Pages </label>
+                    <input type="radio" name="Booklet" id="60p">
+                    <label>60 Pages </label><br><br>
+                </div>
+            </div>
+            <div style="background-color: white; padding: 45px; border-style: groove; margin-top: 43px;">
+                <h1 style="text-align: left; margin-top: 0px;">2. Applicant Details</h1>
+                <div style="display:flex">
+                    <div style="width: 50%; margin-bottom: 25px; margin-top: 25px;">
+                        <label for="name">2.1 Name:</label><br>
+                        <div style="margin-top: 15px;">
+                            <input type="text" id="name" name="name" style="width: 80%;
+                padding: .375rem .75rem; border-radius: .25rem;">
+                        </div>
+                    </div>
+                    <div style="width: 50%; margin-bottom: 25px; margin-top: 25px;">
+                        <label for="">2.2 Are you known by any other names (aliases)? : </label>
+                        <div style="margin-top: 15px;">
+                            <input type="radio" name="aliases" id="Yes">
+                            <label for="" style="padding-right: 50px;">Yes</label>
+                            <input type="radio" name="aliases" id="No">
+                            <label for="">No</label>
+                        </div>
+                    </div>
+                </div>
+                <div style="width: 50%; margin-bottom: 25px; margin-top: 25px;">
+                    <label for="">2.3 Have you ever changed your name? : </label>
+                    <div style="margin-top: 15px; width: 50%;">
+                        <input type="radio" name="changedName" id="Yes1">
+                        <label for="Yes1" style="">Yes</label>
+                        <input type="radio" name="changedName" id="No1">
+                        <label for="No1">No</label>
+                    </div>
+                </div>
+
+                <div style="width: 100%; margin-bottom: 25px;">
+                    <div style="width: 100%; margin-bottom: 25px;">
+                        <label for="">2.4 Place of Birth :</label>
+                    </div>
+                    <div style="width:100%;display:flex">
+                        <div class='' style="width:30%"><label for='village'>Village</label>
+                            <input type='text' name='village'></input>
+                        </div>
+                        <div class='' style="width:30%"><label for='village'>District</label>
+                            <input type='text' name='village'></input>
+                        </div>
+                        <div class='' style="width:30%; "><label for='village'>State</label>
+                            <input style=" display:block" type='text' name='village'></input>
+                        </div><br><br>
+                    </div>
+                </div>
+                <div style="width: 100%; display: flex;">
+                    <div style="width: 50%;">
+                        <div style="width: 100%; margin-bottom: 25px;">
+                            <label for="dob">2.5 Date of Birth : </label>
+                        </div>
+                        <div>
+                            <input type="date" id="dob" name="dob" style="width: 80%;
+                    padding: 0.4375rem 1rem;"><br><br>
+                        </div>
+                    </div>
+                    <div style="width: 50%;">
+                        <div style="width: 100%; margin-bottom: 25px;">
+                            <label for="gender">2.6 Gender : </label>
+                        </div>
+                        <div>
+                            <select id="gender" name="gender" style="width: 80%;
+                    padding: .375rem .75rem; border-radius: .25rem;">
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="transgender">Transgender</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="display: flex;">
+                    <div style="width: 50%;">
+                        <div style="width: 100%; margin-bottom: 25px;">
+                            <label for="maritalStatus">2.7 Marital Status:</label>
+                        </Div>
+                        <div style="width:100%;">
+                            <select id="maritalStatus" name="maritalStatus"
+                                style="width: 90%; padding: 0.4375rem 1rem;">
+                                <option value="single">Single</option>
+                                <option value="married">Married</option>
+                                <option value="divorced">Divorced</option>
+                                <option value="widow">Widow/Widower</option>
+                                <option value="separated">Separated</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div style="width:50%">
+                        <div style="width:100% ;margin-bottom: 25px;">
+                            <label for="">2.8 Citizenship of India by : </label>
+                        </div>
+                        <div style="width:100%">
+                            <select id="citizenship" name="citizenship" style="width: 80%; padding: 0.4375rem 1rem;">
+                                <option value="Birth">Birth</option>
+                                <option value="Descent">Descent</option>
+                                <option value="Registration">Registration</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <br><br>
+                <div style="display: flex;">
+                    <div style="width: 50%;">
+                        <div style="width:100%; padding-bottom: 15px;">
+                            <label for="">2.9 PAN number</label>
+                        </div>
+
+                        <input type="panNumber" id="panNumber" name="panNumber" min="10" max="10"
+                            style="width: 80%; padding: 0.4375rem 1rem;">
+                    </div>
+                    <div style="width: 50%;">
+                        <div style="width: 50%; padding-bottom: 15px;">
+                            <label for="">2.10 Voter ID</label>
+                        </div>
+                        <div>
+                            <input type="voterId" id="voterId" name="voterId"
+                                style="width: 70%; padding: 0.4375rem 1rem;">
+                        </div>
+                    </div>
+                </div>
+                <div style="padding-bottom: 15px; padding-top: 15px;">
+                    <label for="">2.11Employment</label>
+                </div>
+                <div class="emp-container">
+                    <div class="radio-item">
+                        <input type="radio" id="psuRadio" name="employment" value="psu">
+                        <label for="psuRadio">PSU</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="govtStatutoryRadio" name="employment" value="govt_statutory">
+                        <label for="govtStatutoryRadio">Government Statutory Body</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="retiredGovtRadio" name="employment" value="retired_govt">
+                        <label for="retiredGovtRadio">Retired Government Servant</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="selfEmployedRadio" name="employment" value="self_employed">
+                        <label for="selfEmployedRadio">Self Employed</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="privateRadio" name="employment" value="private">
+                        <label for="privateRadio">Private</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="homemakerRadio" name="employment" value="homemaker">
+                        <label for="homemakerRadio">Homemaker</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="notEmployedRadio" name="employment" value="not_employed">
+                        <label for="notEmployedRadio">Not Employed</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="retiredPrivateRadio" name="employment" value="retired_private">
+                        <label for="retiredPrivateRadio">Retired-Private Service</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="studentRadio" name="employment" value="student">
+                        <label for="studentRadio">Student</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="othersRadio" name="employment" value="others">
+                        <label for="othersRadio">Others</label>
+                    </div>
+                </div>
+                <div style="width: 100%; padding-bottom: 15px;">
+                    <label for="">2.12 If employed in Government/ Statutory Body/ PSU, specify organization name :
+                    </label>
+                </div>
+                <div>
+                    <input type="text" id="organizationName" style="width: 70%; padding: 0.4375rem 1rem;"><br><br>
+                </div>
+                <label for="">2.13 Is either of your parent (in case of minor)/ spouse, a government servant? : </label>
+                <input type="radio" name="isMinor" id="Yes">
+                <label for="">Yes</label>
+                <input type="radio" name="isMinor" id="No">
+                <label for="">No</label><br><br>
+                <div style="padding-bottom: 15px;">
+                    <label for="">2.14 Educational Qualification</label>
+                </div>
+                <div class="emp-container">
+                    <div class="radio-item">
+                        <input type="radio" id="7thPassRadio" name="qualification" value="7th_pass">
+                        <label for="7thPassRadio">7th pass or less</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="8th9thStandardRadio" name="qualification" value="8th_9th_standard">
+                        <label for="8th9thStandardRadio">Between 8th and 9th Standard</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="10thPassRadio" name="qualification" value="10th_pass">
+                        <label for="10thPassRadio">10th pass and above</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="graduateAboveRadio" name="qualification" value="graduate_above">
+                        <label for="graduateAboveRadio">Graduate and above</label>
+                    </div>
+                </div>
+
+                <label for="">2.15 Are you eligible for Non-ECR category? :</label>
+                <input type="radio" name="isNon-ECR" id="Yes">
+                <label for="">Yes</label>
+                <input type="radio" name="isNon-ECR" id="No">
+                <label for="">No</label><br><br>
+
+                <Label>2.16 Adhar No : </Label>
+                <input type="text" id="adhar">
+            </div>
+
+            <div style="background-color: white; padding: 45px; border-style: groove; margin-top: 43px;">
+                <h1 style="text-align: left; margin-top: 0px;">3. Family detail</h1>
+                <div style="width: 100%;padding-bottom: 15px;">
+                    <label for="">3.1 Father's Given Name</label>
+                </div>
+                <div class="name-container">
+                    <input type="text" placeholder="Surname"
+                        style="width: 70%; padding: 0.4375rem 1rem; margin-right: 25px;">
+                    <input type="text" placeholder="Frist Name"
+                        style="width: 70%; padding: 0.4375rem 1rem;margin-right: 25px;">
+                    <input type="text" placeholder="Middle Name"
+                        style="width: 70%; padding: 0.4375rem 1rem;margin-right: 25px;">
+                </div>
+
+                <div style="width: 100%;padding-bottom: 15px; padding-top: 15px;">
+                    <label for="">3.2 Mother's Given Name</label>
+                </div>
+                <div class="name-container">
+                    <input type="text" placeholder="Surname"
+                        style="width: 80%; padding: 0.4375rem 1rem; margin-right: 25px;">
+                    <input type="text" placeholder="Frist Name"
+                        style="width: 80%; padding: 0.4375rem 1rem; margin-right: 25px;">
+                    <input type="text" placeholder="Middle Name"
+                        style="width: 80%; padding: 0.4375rem 1rem; margin-right: 25px;">
+                </div>
+
+                <div style="width: 100%;padding-bottom: 15px; padding-top: 15px;">
+                    <label for="">3.3 Legal Guardian's Given Name</label>
+                </div>
+                <div class="name-container">
+                    <input type="text" placeholder="Surname"
+                        style="width: 80%; padding: 0.4375rem 1rem; margin-right: 25px;">
+                    <input type="text" placeholder="Frist Name"
+                        style="width: 80%; padding: 0.4375rem 1rem; margin-right: 25px;">
+                    <input type="text" placeholder="Middle Name"
+                        style="width: 80%; padding: 0.4375rem 1rem; margin-right: 25px;">
+                </div>
+
+                <div style="width: 100%;padding-bottom: 15px; padding-top: 15px;">
+                    <label for="">3.4 Spouse's Given Name</label>
+                </div>
+                <div class="name-container">
+                    <input type="text" placeholder="Surname"
+                        style="width: 80%; padding: 0.4375rem 1rem; margin-right: 25px;">
+                    <input type="text" placeholder="Frist Name"
+                        style="width: 80%; padding: 0.4375rem 1rem; margin-right: 25px;">
+                    <input type="text" placeholder="Middle Name"
+                        style="width: 80%; padding: 0.4375rem 1rem; margin-right: 25px;">
+                </div>
+
+
+            </div>
+
+            <div style="background-color: white; padding: 45px; border-style: groove; margin-top: 43px;">
+                <h1 style="text-align: left; margin-top: 0px;">4. Present Residential Address Details</h1>
+                <div>
+                    <label for="">4.1House No. and Street Name : </label>
+                    <input type="text" , style="width: 60%; padding: 0.4375rem 1rem; margin-right: 25px;">
+                </div>
+                <div class="name-container" style="padding-top: 15px;">
+                    <input type="text" placeholder="Village"
+                        style="width: 80%; padding: 0.4375rem 1rem; margin-right: 25px;">
+                    <input type="text" placeholder="District"
+                        style="width: 80%; padding: 0.4375rem 1rem; margin-right: 25px;">
+                    <input type="text" placeholder="State"
+                        style="width: 80%; padding: 0.4375rem 1rem; margin-right: 25px;">
+                </div>
+
+                <div style="display: flex; padding-top: 15px;">
+                    <div style="width: 50%;">
+                        <div style="width:100%; padding-bottom: 15px;">
+                            <label for="">4.2 PIN code</label>
+                        </div>
+
+                        <input type="pincode" id="pincode" name="pincode" min="10" max="10"
+                            style="width: 80%; padding: 0.4375rem 1rem;">
+                    </div>
+                    <div style="width: 50%;">
+                        <div style="width: 50%; padding-bottom: 15px;">
+                            <label for="">4.3 Mobile No.: </label>
+                        </div>
+                        <div>
+                            <input type="mobileNo" id="mobileNo" name="mobileNo"
+                                style="width: 70%; padding: 0.4375rem 1rem;">
+                        </div>
+                    </div>
+                </div>
+
+                <div style="width: 100%; padding-bottom: 15px; padding-top: 15px;">
+                    <label for="">4.4 Email Id </label>
+                </div>
+                <div>
+                    <input type="text" id="Email" style="width: 90%; padding: 0.4375rem 1rem;"><br><br>
+                </div>
+                <label for="">4.2 Is permanent address same as present address? : </label>
+                <input type="radio" name="present" id="Yes">
+                <label for="">Yes</label>
+                <input type="radio" name="present" id="No">
+                <label for="">No</label><br><br>
+
+            </div>
+
+            <div style="background-color: white; padding: 45px; border-style: groove; margin-top: 43px;">
+                <h1 style="text-align: left; margin-top: 0px;">5. Emergency Contact Details</h1>
+                <div>
+                    <label for="">5.1 Name :</label>
+                    <input type="text" style=" width: 85%; display: block;">
+                </div>
+                <Div style="padding-top: 15px;">
+                    <label for="">5.2 Address :</label>
+                    <input type="text" placeholder="Street name" style="width: 85%; ">
+                    <div class="name-container" style="padding-top: 15px;">
+                        <input type="text" placeholder="Village" style="width: 80%;  margin-right: 25px;">
+                        <input type="text" placeholder="District" style="width: 80%;  margin-right: 25px;">
+                        <input type="text" placeholder="State" style="width: 80%;  margin-right: 25px;">
+                    </div>
+                </Div>
+                <div style="display: flex; padding-top: 15px;">
+                    <div style="width: 50%;">
+                        <div style="width:100%; padding-bottom: 15px;">
+                            <label for="">5.3 Mobile No : </label>
+                        </div>
+
+                        <input type="mobileNo" id="mobileNo" name="mobileNo" min="10" max="10"
+                            style="width: 80%; padding: 0.4375rem 1rem;">
+                    </div>
+                    <div style="width: 50%;">
+                        <div style="width: 86%; padding-bottom: 15px;">
+                            <label for="">5.4 Email Id: </label>
+                        </div>
+                        <div>
+                            <input type="email" id="email" name="email" style="width: 70%; padding: 0.4375rem 1rem;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="background-color: white; padding: 45px; border-style: groove; margin-top: 43px;">
+                <h1 style="text-align: left; margin-top: 0px;">6. Previous Passport/ Application Details</h1>
+                <div>
+                    <label style="padding-bottom: 15px;">6.1 Details of latest held/ existing/ lost/ damaged Ordinary
+                        Passport/ Identity Certificate</label>
+                    <div style="display: flex; padding-top: 15px; padding-left: 10px;">
+                        <div style="width: 40%;margin-left: 28px;">
+                            <label>Passport Number</label>
+                            <input type="number" style="width: 70%; padding: 0.4375rem 1rem;margin-top: 4%;">
+                        </div>
+                        <div style="width: 40%;">
+                            <label>Date of Issue </label>
+                            <input type="date" style="width: 70%; padding: 0.4375rem 1rem; margin-top: 4%;">
+                        </div>
+                        <div style="width: 40%;">
+                            <label>Date of Expiry</label>
+                            <input type="date" style="width: 70%; padding: 0.4375rem 1rem; margin-top: 4%; ">
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 15px;">
+                    <label>6.2 Place of Issue :</label>
+                    <input type="text" style="width: 70%; padding: 0.4375rem 1rem;">
+                </div>
+
+                <div style="padding-top: 15px;">
+                    <label for="">6.3 Have you ever applied for passport, but not issued? : </label>
+                    <input type="radio" name="present" id="Yes">
+                    <label for="">Yes</label>
+                    <input type="radio" name="present" id="No">
+                    <label for="">No</label><br><br>
+                </div>
+            </div>
+
+            <div style="background-color: white; padding: 45px; border-style: groove; margin-top: 43px;">
+                <h1 style="text-align: left; margin-top: 0px;">Other details</h1>
+                <div>
+                    <label style="font-weight: bold;">7.1 Provide the following details if there are any criminal
+                        proceedings pending
+                        against the applicant</label>
+                    <div style="display: flex; padding-top: 15px;">
+                        <div style="width: 80%; padding-left: 30px;">
+                            <label>7.1.1 Are any proceedings in respect of an offence alleged to have been committed by
+                                you pending before a criminal court in India?</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="present" id="Yes">
+                            <label for="">Yes</label>
+                            <input type="radio" name="present" id="No">
+                            <label for="">No</label><br><br>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; padding-top: 15px;">
+                        <div style="width: 80%; padding-left: 30px;">
+                            <label>7.1.2 Has any warrant or summons for your appearance been issued & pending before
+                                a court under any law for the time being in force?</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="present" id="Yes">
+                            <label for="">Yes</label>
+                            <input type="radio" name="present" id="No">
+                            <label for="">No</label><br><br>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; padding-top: 15px;">
+                        <div style="width: 80%; padding-left: 30px;">
+                            <label>7.1.3 Has a warrant for your arrest been issued by a court under any law for the time
+                                being in force?</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="present" id="Yes">
+                            <label for="">Yes</label>
+                            <input type="radio" name="present" id="No">
+                            <label for="">No</label><br><br>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; padding-top: 15px;">
+                        <div style="width: 80%; padding-left: 30px;">
+                            <label>7.1.4 Has an order prohibiting your departure from India been made by any court?
+                            </label>
+                        </div>
+                        <div>
+                            <input type="radio" name="present" id="Yes">
+                            <label for="">Yes</label>
+                            <input type="radio" name="present" id="No">
+                            <label for="">No</label><br><br>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="padding-bottom: 15px;">
+                    <label style="font-weight: bold;">7.2 Provide the following details if the applicant has been
+                        convicted by a court in
+                        India.</label>
+                    <div style="display: flex; padding-top: 15px;">
+                        <div style="width: 80%; padding-left: 30px;">
+                            <label>7.2.1 Have you, at any time during the period of five years immediately preceding the
+                                date of this application, been convicted by a court in India for any offence
+                                involving moral turpitude and sentenced in respect thereof to imprisonment for
+                                not less than two years?</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="present" id="Yes">
+                            <label for="">Yes</label>
+                            <input type="radio" name="present" id="No">
+                            <label for="">No</label><br><br>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <label style="font-weight: bold;">7.3 Provide the following details if the applicant has been
+                        refused/denied passport</label>
+                    <div style="display: flex; padding-top: 15px;">
+                        <div style="width: 80%; padding-left: 30px;">
+                            <label>7.3.1Have you ever been refused/denied passport?</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="present" id="Yes">
+                            <label for="">Yes</label>
+                            <input type="radio" name="present" id="No">
+                            <label for="">No</label><br><br>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; padding-top: 15px;">
+                        <div style="width: 80%; padding-left: 30px;">
+                            <label>7.3.2Has your passport ever been impounded?</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="present" id="Yes">
+                            <label for="">Yes</label>
+                            <input type="radio" name="present" id="No">
+                            <label for="">No</label><br><br>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; padding-top: 15px;">
+                        <div style="width: 80%; padding-left: 30px;">
+                            <label>7.3.3Has your passport ever been revoked?</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="present" id="Yes">
+                            <label for="">Yes</label>
+                            <input type="radio" name="present" id="No">
+                            <label for="">No</label><br><br>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <label style="font-weight: bold;">7.4 Provide the following details if applicant has applied for or
+                        been granted foreign citizenship.</label>
+                    <div style="display: flex; padding-top: 15px;">
+                        <div style="width: 80%; padding-left: 30px;">
+                            <label>7.4.1 Have you ever been granted citizenship by any other region/country?</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="present" id="Yes">
+                            <label for="">Yes</label>
+                            <input type="radio" name="present" id="No">
+                            <label for="">No</label><br><br>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; padding-top: 15px;">
+                        <div style="width: 80%; padding-left: 30px;">
+                            <label>7.4.2 Have you ever held the passport of any other region/countryat any time?</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="present" id="Yes">
+                            <label for="">Yes</label>
+                            <input type="radio" name="present" id="No">
+                            <label for="">No</label><br><br>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; padding-top: 15px;">
+                        <div style="width: 80%; padding-left: 30px;">
+                            <label>7.4.3 Have you ever surrendered your Indian pas
+                                sport?</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="present" id="Yes">
+                            <label for="">Yes</label>
+                            <input type="radio" name="present" id="No">
+                            <label for="">No</label><br><br>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; padding-top: 15px;">
+                        <div style="width: 80%; padding-left: 30px;">
+                            <label>7.4.4Have you ever applied for renunciation of Indian citizenship?</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="present" id="Yes">
+                            <label for="">Yes</label>
+                            <input type="radio" name="present" id="No">
+                            <label for="">No</label><br><br>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div style="background-color: white; padding: 45px; border-style: groove; margin-top: 43px;">
+                <h1 style="text-align: left; margin-top: 0px;"> Fee Detail</h1>
+
+                <div>
+                    <label>8.1 Fee amount : </label>
+                    <input type="number" style="width: 40%; padding: 0.4375rem 1rem;">
+                </div>
+
+                <div style="padding-top: 15px;">
+                    <label style="padding-bottom: 15px; padding-top: 15px;">8.2 If paid by Demand Draft (DD), provide
+                        the following details : </label>
+                    <div style="display: flex; padding-top: 15px; padding-left: 10px;">
+                        <div style="width: 40%;margin-left: 28px;">
+                            <label>DD Number</label>
+                            <input type="number" style="width: 70%; padding: 0.4375rem 1rem;margin-top: 4%;">
+                        </div>
+                        <div style="width: 40%;">
+                            <label>DD Issue Date </label>
+                            <input type="date" style="width: 70%; padding: 0.4375rem 1rem; margin-top: 4%;">
+                        </div>
+                        <div style="width: 40%;">
+                            <label>DD Expiry Date</label>
+                            <input type="date" style="width: 70%; padding: 0.4375rem 1rem; margin-top: 4%; ">
+                        </div>
+                    </div>
+                    <div style="display: flex; padding-top: 15px;">
+                        <div style="width: 40%;margin-left: 37px;">
+                            <label>Bank Name</label>
+                            <input type="number" style="width: 70%; padding: 0.4375rem 1rem;margin-top: 4%;">
+                        </div>
+                        <div style="width: 40%;margin-left: 28px;">
+                            <label>Branch</label>
+                            <input type="number" style="width: 75%; padding: 0.4375rem 1rem;margin-top: 4%;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="background-color: white; padding: 45px; border-style: groove; margin-top: 43px;">
+                <h1 style="text-align: left; margin-top: 0px;">9. Enclosures</h1>
+
+                <div style="padding-left: 15%; display: flex; ">
+                    <label style="width: 35%;">1. Adhar card</label>
+                    <div>
+                        <input type="file">
+                    </div>
+                </div>
+
+                <div style="padding-left: 15%; display: flex;">
+                    <label style="width: 35%;">2. Pan Card</label>
+                    <div>
+                        <input type="file">
+                    </div>
+                </div>
+
+                <div style="padding-left: 15%; display: flex;">
+                    <label style="width: 35%;">3. Birth Certificate</label>
+                    <div>
+                        <input type="file">
+                    </div>
+                </div>
+
+                <div style="padding-left: 15%; display: flex;">
+                    <label style="width: 35%;">4. Photo</label>
+                    <div>
+                        <input type="file">
+                    </div>
+                </div>
+
+                <div style="padding-left: 15%; display: flex;">
+                    <label style="width: 35%;">5. Sign</label>
+                    <div>
+                        <input type="file">
+                    </div>
+                </div>
+            </div>
+
+            <div style="background-color: white; padding: 45px; border-style: groove; margin-top: 43px;">
+                <h1 style="text-align: left; margin-top: 0px;">10. Self Declaration</h1>
+                <div style="padding-left: 4%; padding-right: 4%;">
+                    <p>I owe allegiance to the sovereignty, unity & integrity of India, and have not voluntarily
+                        acquired citizenship or travel document of any other country. I have not lost, surrendered or
+                        been deprived of the citizenship of India. I have not contravened any of the conditions relating
+                        to the possession and use of an Indian passport.</p>
+                </div>
+                <div style="padding-left: 4%; padding-right: 4%;">
+                    <p>I affirm that the information and particulars givenby me in this form are true and correct. I
+                        further state that I am not suppressing any material information in this regard. I further
+                        affirm that the enclosures and documentary proof submitted in support of my application for an
+                        Indian passport are authentic and solely pertain to me and I am fully responsible for the
+                        accuracy of the same. I am liable to be penalized or prosecuted if found otherwise. I am aware
+                        that under the Passports Act, 1967 it is a criminal offence to furnish any false information or
+                        to suppress any material information with a view to obtaining passport or travel document.</p>
+                </div>
+                <div style="padding-left: 4%; padding-right: 4%;">
+                    <p>I affirm that the information and particulars givenby me in this form are true and correct. I
+                        further state that I am not suppressing any material information in this regard. I further
+                        affirm that the enclosures and documentary proof submitted in support of my application for an
+                        Indian passport are authentic and solely pertain to me and I am fully responsible for the
+                        accuracy of the same. I am liable to be penalized or prosecuted if found otherwise. I am aware
+                        that under the Passports Act, 1967 it is a criminal offence to furnish any false information or
+                        to suppress any material information with a view to obtaining passport or travel document.</p>
+                </div>
+
+                <div style="padding-left: 4%;">
+                    <div style="padding-bottom: 1px;">
+                        <label for="">Place :
+                            <input type="text">
+                        </label>
+                    </div><br>
+                    <label for="">Date :
+                        <input type="date">
+                    </label>
+
+
+                </div>
+            </div>
+
+
+            <div style="display: flex;
+            justify-content: center;
+            padding-top: 15px;">
+                <input class="form-submit" type="submit">
+            </div>
+    </div>
+    </div>
+    </div>
+    </form>
+
+
+
+    <script>
+        function updateOptions() {
+            // Show or hide additional options based on checkbox selection
+            additionalOptions.style.display = renew.checked ? "block" : "none";
+        }
+    </script>
+</body>
+
+
+</html>
